@@ -1,0 +1,22 @@
+---
+title: "Blog"
+layout: "base.njk"
+eleventyNavigation:
+  key: "Blog"
+  order: 2
+---
+<h1>Blog</h1>
+
+<ul class="postlist">
+  {%- for post in collections.posts | reverse -%}
+  <li class="postlist-item">
+    <a class="postlist-link" href="{{ post.url | url }}">{{ post.data.title }}</a>   
+    <p>{{post.data.description}}</p>
+    <span class="tag">{{ post.data.topics }}</span> <div class="postlist-date"> <time datetime="{{ post.data.date | isoDate }}" class="post-list__date">{{
+        post.data.date | postDate
+      }}</time>
+    </div>
+    <a href="{{ post.url | url }}" class="postlist-read-more">Read More →</a>    
+  </li>
+  {%- endfor -%}
+</ul>

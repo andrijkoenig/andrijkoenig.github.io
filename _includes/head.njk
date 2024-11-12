@@ -1,0 +1,14 @@
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="{{ description or metadata.description }}">
+
+<title>
+{%- if title -%}
+    {{ title }} | {{ metadata.title }}
+{%- else -%}
+    {{ metadata.title }}
+{%- endif -%}
+</title>
+<link rel="icon" type="image/x-icon" href="{{ '/img/favicon.ico' | url }}" />
+<link rel="stylesheet" href="{{ '/css/index.css' | url }}" />
+<script src="{{ '/js/theme-toggle.js' | url }}" />

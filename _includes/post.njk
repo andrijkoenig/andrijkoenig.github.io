@@ -1,0 +1,18 @@
+---
+layout: base.njk
+---
+<a href="{{ '/blog/' | url }}">← Back to Blog</a>
+
+
+<h1>{{ title }}</h1>
+
+<ul class="post-metadata">
+	<li><time datetime="{{ page.date | postDate }}">{{ page.date | postDate  }}</time></li>
+	{%- for tag in tags %}
+		{%- if tag != "posts" %}
+		<li><a class="post-tag">{{ tag }}</a></li>
+		{%- endif %}
+	{%- endfor %}
+</ul>
+
+{{ content | safe }}

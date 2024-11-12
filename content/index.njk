@@ -1,0 +1,40 @@
+---
+layout: "base.njk"
+eleventyNavigation:
+  key: "Home"
+  order: 1
+numberOfLatestPostsToShow: 3
+---
+
+<h1>Hi, I'm Andrij.</h1>
+<p>
+ I’m a Software Developer with half a decade of experience, currently leading the rewrite of a critical project at <a href="https://www.datev.de" target="_blank" rel="noopener noreferrer">DATEV</a>, a leading software provider in Germany. My expertise spans the full .NET ecosystem, including WPF, ASP.NET, EF Core, and other core technologies. On the frontend side, I have solid experience with Angular.
+</p>
+<p>
+  Based in Mannheim, Germany, I’m deeply interested in exploring new technologies and understanding how systems work under the hood. I enjoy staying at the forefront of innovation to create high-quality solutions.
+</p>
+<p>
+  I’m always looking for ways to improve both my technical and leadership skills. I have a strong passion for solving complex challenges and building scalable, maintainable software that drives business impact.
+</p>
+<p>
+  This site is where I organize and share my thoughts.
+</p>
+
+<h2>Latest blog posts</h2>
+
+{% set posts = collections.posts | reverse | limit(numberOfLatestPostsToShow) %}
+
+<ul>
+  {%- for post in posts -%}
+  <li>
+    <a href="{{ post.url | url}}">{{ post.data.title }}</a>
+    <div>
+      <time datetime="{{ post.data.date | isoDate }}" class="post-list__date">{{
+        post.data.date | postDate
+      }}</time>
+    </div>
+  </li>
+  {%- endfor -%}
+</ul>
+
+<a href="{{ '/blog' | url }}" class="main-link">See all posts →</a>
