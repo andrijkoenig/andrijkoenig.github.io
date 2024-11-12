@@ -1,0 +1,358 @@
+/*------------------------------------*\
+  #FONTS
+\*------------------------------------*/
+@font-face {
+	font-display: swap;
+	font-family: 'Atkinson Hyperlegible';
+	font-style: normal;
+	font-weight: 400;
+	src: url('../fonts/atkinson-hyperlegible-v11-latin-regular.woff2') format('woff2');
+}
+
+@font-face {
+	font-display: swap;
+	font-family: 'Atkinson Hyperlegible';
+	font-style: italic;
+	font-weight: 400;
+	src: url('../fonts/atkinson-hyperlegible-v11-latin-italic.woff2') format('woff2');
+}
+
+@font-face {
+	font-display: swap;
+	font-family: 'Atkinson Hyperlegible';
+	font-style: normal;
+	font-weight: 700;
+	src: url('../fonts/atkinson-hyperlegible-v11-latin-700.woff2') format('woff2');
+}
+
+/*------------------------------------*\
+  #ROOT VARIABLES
+\*------------------------------------*/
+:root {
+	/* Typography */
+	--font-family: 'Atkinson Hyperlegible', -apple-system, system-ui, sans-serif;
+	--font-family-monospace: Consolas, Menlo, Monaco, Andale Mono WT, Andale Mono, Lucida Console,
+		Lucida Sans Typewriter, DejaVu Sans Mono, Bitstream Vera Sans Mono, Liberation Mono,
+		Nimbus Mono L, Courier New, Courier, monospace;
+
+	/* Colors - Light Theme */
+	--color-gray-20: #e0e2e0;
+	--color-gray-50: #bfc3bf;
+	--color-gray-90: #2b302b;
+	--background-color: #fafbfa;
+	--text-color: var(--color-gray-90);
+	--text-color-link: #234820;
+	--text-color-link-active: #183415;
+	--link-hover: #2d5a27;
+	--border-color: #dce0dc;
+
+	/* Utilities */
+	--syntax-tab-size: 2;
+}
+
+/*------------------------------------*\
+  #DARK THEME
+\*------------------------------------*/
+[data-theme="dark"] {
+	--background-color: #1a1c1a;
+	--text-color: #ffffff;
+	--color-gray-20: #2a2c2a;
+	--color-gray-50: #8a918a;
+	--color-gray-90: #e0e2e0;
+	--text-color-link: #9fb8a2;
+	--text-color-link-active: #75916f;
+	--link-hover: #c5d4c7;
+	--border-color: #3a3c3a;
+	--text-shadow: 0 1px 1px rgba(0, 0, 0, 0.3);
+}
+
+/*------------------------------------*\
+  #RESET & BASE STYLES
+\*------------------------------------*/
+* {
+	box-sizing: border-box;
+}
+
+html,
+body {
+	padding: 0;
+	margin: 0 auto;
+	font-family: var(--font-family);
+	color: var(--text-color);
+	background-color: var(--background-color);
+}
+
+html {
+	overflow-y: scroll;
+}
+
+body {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	max-width: 60em;
+}
+
+/*------------------------------------*\
+  #TYPOGRAPHY
+\*------------------------------------*/
+p {
+	line-height: 1.5;
+	margin-bottom: 0;
+	font-size: 1.1rem;
+}
+
+li {
+	line-height: 1.5;
+}
+
+pre,
+code {
+	font-family: var(--font-family-monospace);
+}
+
+pre:not([class*="language-"]) {
+	margin: .5em 0;
+	line-height: 1.375;
+	-moz-tab-size: var(--syntax-tab-size);
+	-o-tab-size: var(--syntax-tab-size);
+	tab-size: var(--syntax-tab-size);
+	-webkit-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+	direction: ltr;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	overflow-x: auto;
+}
+
+code {
+	word-break: break-all;
+}
+
+/*------------------------------------*\
+  #LINKS
+\*------------------------------------*/
+a[href] {
+	color: var(--text-color-link);
+}
+
+a[href]:hover {
+	color: var(--link-hover);
+}
+
+a[href]:active {
+	color: var(--text-color-link-active);
+}
+
+[data-theme="dark"] a[href] {
+	text-shadow: var(--text-shadow);
+}
+
+p>a {
+	color: var(--text-color) !important;
+	font-style: italic;
+	text-decoration-style: dashed;
+}
+
+/*------------------------------------*\
+  #LAYOUT
+\*------------------------------------*/
+main {
+	max-width: 40em;
+	margin: auto;
+	flex: 1;
+	padding: 1rem;
+}
+
+main :first-child {
+	margin-top: 0;
+}
+
+header {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 1.5em 2em;
+	margin-bottom: 2em;
+}
+
+/*------------------------------------*\
+  #NAVIGATION
+\*------------------------------------*/
+nav {
+	margin-left: auto;
+	display: flex;
+	align-items: center;
+}
+
+.nav {
+	display: flex;
+	padding: 0;
+	margin: 0;
+	list-style: none;
+	gap: 2em;
+}
+
+.nav-item {
+	display: inline-block;
+	font-size: 1.2rem;
+}
+
+.nav-item a[href] {
+	text-decoration: none;
+	font-weight: 500;
+}
+
+.nav a[href][aria-current="page"] {
+	text-decoration: underline;
+}
+
+.home-link {
+	font-size: 1.6em;
+	font-weight: 700;
+	text-decoration: none;
+}
+
+/*------------------------------------*\
+  #POST LIST
+\*------------------------------------*/
+.postlist {
+	list-style: none;
+	padding: 0;
+}
+
+.postlist-item {
+	margin-bottom: 2rem;
+	padding: 1rem;
+	border-bottom: 1px solid var(--border-color);
+}
+
+.postlist-link {
+	font-size: 1.5rem;
+	font-weight: 700;
+	color: var(--text-color-link);
+	text-decoration: none;
+	display: block;
+	margin-bottom: 0.5rem;
+}
+
+.postlist-date {
+	font-size: 0.875rem;
+	color: var(--color-gray-50);
+	margin-bottom: 1rem;
+}
+
+/*------------------------------------*\
+  #TAGS
+\*------------------------------------*/
+.post-tag {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	text-transform: capitalize;
+	font-style: italic;
+	background-color: rgba(35, 72, 32, 0.1);
+	padding: 0.2em 0.8em;
+	border-radius: 12px;
+	font-size: 0.9em;
+	text-decoration: none;
+	transition: background-color 0.2s ease;
+}
+
+[data-theme="dark"] .post-tag {
+	background-color: rgba(115, 140, 115, 0.2);
+}
+
+.post-tag:hover {
+	background-color: rgba(35, 72, 32, 0.15);
+}
+
+.post-metadata {
+	display: inline-flex;
+	flex-wrap: wrap;
+	gap: 0.8em;
+	list-style: none;
+	padding: 0;
+	margin: 1em 0;
+}
+
+/*------------------------------------*\
+  #FOOTER
+\*------------------------------------*/
+.site-footer {
+	border-top: 1px dashed var(--color-gray-20);
+	padding: 1rem;
+	margin-top: auto;
+}
+
+.site-footer__content {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	gap: 1rem;
+}
+
+.social-links {
+	display: flex;
+	gap: 1rem;
+	align-items: center;
+}
+
+.social-icon {
+	width: 24px;
+	height: 24px;
+	stroke-width: 2;
+	transition: transform 0.2s ease;
+}
+
+.social-links a:hover .social-icon {
+	transform: scale(1.1);
+}
+
+/*------------------------------------*\
+  #THEME TOGGLE
+\*------------------------------------*/
+#theme-toggle {
+	display: flex;
+	align-items: center;
+	margin-left: 2em;
+}
+
+#theme-toggle svg {
+	width: 28px;
+	height: 28px;
+}
+
+/*------------------------------------*\
+  #MEDIA QUERIES
+\*------------------------------------*/
+@media (max-width: 768px) {
+	.home-link {
+		display: none;
+	}
+
+	header {
+		justify-content: center;
+		padding: 1.2em 1em;
+	}
+
+	nav {
+		flex: 1;
+		margin-left: 0;
+	}
+
+	.nav {
+		justify-content: center;
+		width: 100%;
+		gap: 1.5em;
+	}
+
+	#theme-toggle {
+		position: absolute;
+		right: 1em;
+		margin-left: 0;
+	}
+}
